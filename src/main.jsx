@@ -5,15 +5,18 @@ import "./index.css";
 import NavbarComponent from "./components/NavbarComponent/NavbarComponent";
 import { ThemeProvider } from "@material-tailwind/react";
 import {
-  BrowserRouter,
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 import ExercisesComponent from "./components/ExercisesComponent/ExercisesComponent.jsx";
 import ExerciseDetailsComponent from "./components/ExerciseDetailsComponent/ExerciseDetailsComponent.jsx";
-import { AppProvider } from "./context/AppProvider/AppProvider.jsx";
+
+//redux
 import { Provider } from "react-redux";
-import store from "./redux/store.js";
+import store, { persistor } from "./redux/store.js";
+import { PersistGate } from 'redux-persist/integration/react';
+
+
 
 const router = createBrowserRouter([
   {
@@ -40,10 +43,12 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
-      <ThemeProvider>
-        <NavbarComponent />
-        <RouterProvider router={router} />
-      </ThemeProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <ThemeProvider>
+          <NavbarComponent />
+          <RouterProvider router={router} />
+        </ThemeProvider>
+      </PersistGate>
     </Provider>
   </StrictMode>
 );

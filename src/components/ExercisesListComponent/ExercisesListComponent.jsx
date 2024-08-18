@@ -1,5 +1,4 @@
-import { useContext, useEffect } from "react";
-import { AppContext } from "../../context/context";
+import { useEffect, useState } from "react";
 import {
   Card,
   CardBody,
@@ -9,13 +8,17 @@ import {
 } from "@material-tailwind/react";
 
 import { EXERCISES as Exercises } from "../../constants/Exercises";
+import { useDispatch } from 'react-redux';
+import { setExerciseInfo } from '../../redux/reducers/exerciseSlice';
 
 export default function ExercisesListComponent() {
-  const { description, toggleDescription } = useContext(AppContext);
+  const [actualExercise, setActualExercise] = useState({});
+  const dispatch = useDispatch(); // Corrección del error tipográfico
 
   useEffect(() => {
-    console.log(description);
-  }, [description]);
+    dispatch(setExerciseInfo(actualExercise)); // Llamada directa a dispatch
+    console.log(actualExercise)
+  }, [actualExercise, dispatch]);
 
   const exercisesList = Exercises.map((exercise, index) => {
     return (
@@ -32,14 +35,13 @@ export default function ExercisesListComponent() {
                   variant="h3"
                   className="mb-2"
                   style={{ cursor: "pointer" }}
-                  onClick={() => toggleDescription(exercise.id)}
                 >
-                  {/* <a
+                  <a
                     href={"ejercicios/" + `${exercise.id}`}
-                    onClick={() => toggleDescription(exercise.id)}
+                    onClick={() => setActualExercise(exercise)}
                   >
-                  </a> */}
-                  {exercise.title}
+                    {exercise.title} {/* Añadido texto dentro del enlace */}
+                  </a>
                 </Typography>
               </div>
             </div>
@@ -56,7 +58,6 @@ export default function ExercisesListComponent() {
       </div>
     );
   });
-  console.log(Exercises);
 
   return <> {exercisesList} </>;
 }

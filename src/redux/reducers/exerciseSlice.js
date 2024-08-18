@@ -6,19 +6,17 @@ export const exerciseSlice = createSlice({
   initialState: {
     title: "",
     description: "",
+    id: '',
   },
   reducers: {
     setExerciseInfo: (state, action) => {
+      state.id = action.payload.id;
       state.title = action.payload.title;
       state.description = action.payload.description;
     },
-    // logout: (state) => {
-    //   state.name = "";
-    //   state.email = "";
-    // },
   },
 });
 
-export const { setExerciseInfo } = userSlice.actions;
+export const { setExerciseInfo } = exerciseSlice.actions;
 
 export default exerciseSlice.reducer;
