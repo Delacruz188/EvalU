@@ -12,6 +12,8 @@ import {
 import ExercisesComponent from "./components/ExercisesComponent/ExercisesComponent.jsx";
 import ExerciseDetailsComponent from "./components/ExerciseDetailsComponent/ExerciseDetailsComponent.jsx";
 import { AppProvider } from "./context/AppProvider/AppProvider.jsx";
+import { Provider } from "react-redux";
+import store from "./redux/store.js";
 
 const router = createBrowserRouter([
   {
@@ -37,11 +39,11 @@ const router = createBrowserRouter([
 ]);
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <AppProvider>
+    <Provider store={store}>
       <ThemeProvider>
         <NavbarComponent />
         <RouterProvider router={router} />
       </ThemeProvider>
-    </AppProvider>
+    </Provider>
   </StrictMode>
 );
