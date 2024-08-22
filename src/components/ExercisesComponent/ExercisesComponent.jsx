@@ -1,5 +1,5 @@
 import ExercisesListComponent from "../ExercisesListComponent/ExercisesListComponent";
-import FilterComponent from "../FilterComponent/FilterComponent";
+// import SearchBarComponent from "../SerchBarComponent/SearchBarComponent";
 function ExercisesComponent() {
   return (
     <div>
@@ -8,7 +8,7 @@ function ExercisesComponent() {
         style={{ alignItems: "center" }}
       >
         <div className=" flex flex-1" style={{ alignItems: "start" }}>
-          <FilterComponent />
+          {/* <SearchBarComponent /> */}
         </div>
         <div className="flex flex-1 flex-wrap justify-center">
           <ExercisesListComponent />

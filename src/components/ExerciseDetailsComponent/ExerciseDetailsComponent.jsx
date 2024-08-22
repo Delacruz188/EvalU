@@ -7,7 +7,8 @@ import {
   Button,
 } from "@material-tailwind/react";
 import Editor from "@monaco-editor/react";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
+import CodeViewerComponent from "src@components/CodeViewerComponent/CodeViewerComponent";
 
 export default function ExercisesListComponent() {
   const [actualCode, setActualCode] = useState("");
@@ -15,9 +16,8 @@ export default function ExercisesListComponent() {
   const exercise = useSelector((state) => state.exercise);
 
   useEffect(() => {
-    console.log(exercise)
-  }, [exercise])
-
+    console.log(exercise);
+  }, [exercise]);
 
   return (
     <div className="flex justify-center">
@@ -41,18 +41,25 @@ export default function ExercisesListComponent() {
           <Editor
             height="50vh"
             width="50vw"
-            defaultValue="// some comment"
+            defaultValue="// escribe tu respuesta :D"
             theme="vs-dark"
             defaultLanguage="javascript"
-            onChange={(value) => value != "" && setActualCode(value)}
+            onChange={(value) => value.trim() != "" && setActualCode(value)}
           />
         </CardBody>
         <CardFooter className="pt-0">
-          <Button onClick={() => console.log({
-            id: exercise.id,
-            actualCode
-          })}>Revisar</Button>
+          <Button
+            onClick={() =>
+              console.log({
+                id: exercise.id,
+                actualCode,
+              })
+            }
+          >
+            Revisar
+          </Button>
         </CardFooter>
+        <CodeViewerComponent code={actualCode} />
       </Card>
     </div>
   );

@@ -8,8 +8,8 @@ import {
 } from "@material-tailwind/react";
 
 import { EXERCISES as Exercises } from "../../constants/Exercises";
-import { useDispatch } from 'react-redux';
-import { setExerciseInfo } from '../../redux/reducers/exerciseSlice';
+import { useDispatch } from "react-redux";
+import { setExerciseInfo } from "../../redux/reducers/exerciseSlice";
 
 export default function ExercisesListComponent() {
   const [actualExercise, setActualExercise] = useState({});
@@ -17,7 +17,7 @@ export default function ExercisesListComponent() {
 
   useEffect(() => {
     dispatch(setExerciseInfo(actualExercise)); // Llamada directa a dispatch
-    console.log(actualExercise)
+    console.log(actualExercise);
   }, [actualExercise, dispatch]);
 
   const exercisesList = Exercises.map((exercise, index) => {
@@ -40,7 +40,7 @@ export default function ExercisesListComponent() {
                     href={"ejercicios/" + `${exercise.id}`}
                     onClick={() => setActualExercise(exercise)}
                   >
-                    {exercise.title} {/* Añadido texto dentro del enlace */}
+                    {exercise.title}
                   </a>
                 </Typography>
               </div>

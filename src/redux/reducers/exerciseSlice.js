@@ -1,4 +1,3 @@
-// redux/userSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 export const exerciseSlice = createSlice({
@@ -6,7 +5,7 @@ export const exerciseSlice = createSlice({
   initialState: {
     title: "",
     description: "",
-    id: '',
+    id: "",
   },
   reducers: {
     setExerciseInfo: (state, action) => {
