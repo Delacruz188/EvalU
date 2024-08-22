@@ -14,10 +14,11 @@ export default function ExercisesListComponent() {
   const [actualCode, setActualCode] = useState("");
   // const [actualInfo, setActualInfo] = useState({});
   const exercise = useSelector((state) => state.exercise);
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
-    console.log(exercise);
-  }, [exercise]);
+    console.log(user);
+  }, [exercise, user]);
 
   return (
     <div className="flex justify-center">

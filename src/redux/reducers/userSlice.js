@@ -4,20 +4,20 @@ import { createSlice } from "@reduxjs/toolkit";
 export const userSlice = createSlice({
   name: "user",
   initialState: {
-    name: "",
     email: "",
+    pwd: "",
     isAuthenticated: false,
   },
   reducers: {
     login: (state, action) => {
-      state.name = action.payload.name;
       state.email = action.payload.email;
-      state.isAuthenticated = true;
+      state.pwd = action.payload.pwd;
+      state.isAuthenticated = action.payload.isAuthenticated;
     },
-    logout: (state) => {
-      state.name = "";
+    logout: (state, action) => {
       state.email = "";
-      state.isAuthenticated = false;
+      state.pwd = "";
+      state.isAuthenticated = action.payload.isAuthenticated;
     },
   },
 });

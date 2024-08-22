@@ -13,10 +13,10 @@ import { setExerciseInfo } from "../../redux/reducers/exerciseSlice";
 
 export default function ExercisesListComponent() {
   const [actualExercise, setActualExercise] = useState({});
-  const dispatch = useDispatch(); // Corrección del error tipográfico
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setExerciseInfo(actualExercise)); // Llamada directa a dispatch
+    dispatch(setExerciseInfo(actualExercise));
     console.log(actualExercise);
   }, [actualExercise, dispatch]);
 

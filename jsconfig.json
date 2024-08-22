@@ -1,12 +1,15 @@
 {
-    "compilerOptions": {
-      "paths": {
-        "src@components/*": [
-          "./src/components/*"
-        ],
-        "src@hooks/*": [
-          "./src/hooks/*"
-        ]
-      }
+  "compilerOptions": {
+    "paths": {
+      "src@components/*": [
+        "./src/components/*"
+      ],
+      "src@hooks/*": [
+        "./src/hooks/*"
+      ],
+      "src@redux/*": [
+        "./src/redux/*"
+      ]
     }
   }
+}
